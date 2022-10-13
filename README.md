@@ -5,4 +5,4 @@
 <b>https://pococurante-surveys.000webhostapp.com/payment_gateway/</b>
 
 
-![](reg.png)
+![](reg.PNG)
