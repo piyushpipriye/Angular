@@ -11,6 +11,23 @@
             background-color: pink;
         }
 
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
         .container {
             padding: 50px;
             background-color: lightblue;
@@ -77,7 +94,7 @@
                     Course :
                 </label>
 
-                <select ng-model="cvalue" name="coption" >
+                <select ng-model="cvalue" name="coption">
                     <option ng-model="cvalue" name="coption" value="Course">Course</option>
                     <option ng-model="cvalue1" name="coption" value="B.Tech">B.Tech</option>
                     <option ng-model="cvalue2" name="coption" value="MBA">MBA</option>
@@ -149,7 +166,7 @@
                 if ($scope.gvalue1)
                     $scope.gender.push(registrationForm.goption.value);
                 if ($scope.gvalu2)
-                    $scope.gender.push(registrationForm.goption .value);
+                    $scope.gender.push(registrationForm.goption.value);
 
                 $scope.registrationDetails = [{
                     key: 'Full Name',
