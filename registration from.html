@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js">
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Calibri, Helvetica, sans-serif;
+            background-color: pink;
+        }
+
+        .container {
+            padding: 50px;
+            background-color: lightblue;
+        }
+
+        input[type=text],
+        input[type=password],
+        textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        input[type=text]:focus,
+        input[type=password]:focus {
+            background-color: orange;
+            outline: none;
+        }
+
+        div {
+            padding: 10px 0;
+        }
+
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+        .registerbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+        .registerbtn:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body ng-app="myApp">
+    <form name="registrationForm" ng-controller="myCtrl">
+        <div class="container">
+            <center>
+                <h1> Student Registeration Form</h1>
+            </center>
+            <hr>
+            <label> Firstname </label>
+            <input type="text" ng-model="name" name="firstname" placeholder="Firstname" size="15" required />
+            <label> Middlename: </label>
+            <input type="text" ng-model="mname" name="middlename" placeholder="Middlename" size="15" required />
+            <label> Lastname: </label>
+            <input type="text" ng-model="lname" name="lastname" placeholder="Lastname" size="15" required />
+            <div>
+                <label>
+                    Course :
+                </label>
+
+                <select ng-model="cvalue" name="coption" >
+                    <option ng-model="cvalue" name="coption" value="Course">Course</option>
+                    <option ng-model="cvalue1" name="coption" value="B.Tech">B.Tech</option>
+                    <option ng-model="cvalue2" name="coption" value="MBA">MBA</option>
+                    <option ng-model="cvalue3" name="coption" value="MCA">MCA</option>
+                </select>
+            </div>
+            <div>
+                <label>
+                    Gender :
+                </label><br>
+                <input type="radio" ng-model="gvalue" name="goption" value="Male"> Male
+                <input type="radio" ng-model="gvalue1" name="goption" value="Female"> Female
+                <input type="radio" ng-model="gvalue2" name="goption" value="Other"> Other
+
+            </div>
+            <label>
+                Phone :
+            </label>
+            <input type="text" ng-model="pvalue" name="phone" placeholder="phone no." size="10" / required> Current
+            Address :
+            <textarea cols="80" ng-model="avalue" name="address" rows="5" placeholder="Current Address" value="address"
+                required>
+</textarea>
+            <label for="email"><b>Email</b></label>
+            <input type="text" ng-model="evalue" placeholder="Enter Email" name="email" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+            <label for="psw-repeat"><b>Re-type Password</b></label>
+            <input type="password" placeholder="Retype Password" name="psw-repeat" required>
+            <button type="submit" ng-click="details()" class="registerbtn">Register</button>
+
+            <div>
+                <br />
+                <table border="1px solid black" style="border-collapse: collapse">
+                    <tr border="1px solid black" style="border-collapse: collapse" ng-repeat="x in registrationDetails">
+                        <td>{{x.key}}</td>
+                        <td>{{x.value}}</td>
+                    </tr>
+                </table>
+            </div>
+    </form>
+
+    <script type="text/javascript">
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope) {
+            $scope.details = function () {
+                $scope.fname = $scope.name + " " + $scope.mname + " " + $scope.lname;
+                $scope.courses = []
+                $scope.gender = []
+                $scope.phone = $scope.pvalue;
+                $scope.add = $scope.avalue;
+                $scope.email = $scope.evalue;
+
+
+                if ($scope.cvalue)
+                    $scope.courses.push(registrationForm.coption.value);
+                if ($scope.cvalue1)
+                    $scope.courses.push(registrationForm.coption.value);
+                if ($scope.cvalue2)
+                    $scope.courses.push(registrationForm.coption.value);
+                if ($scope.cvalue3)
+                    $scope.courses.push(registrationForm.coption.value);
+
+
+                if ($scope.gvalue)
+                    $scope.gender.push(registrationForm.goption.value);
+                if ($scope.gvalue1)
+                    $scope.gender.push(registrationForm.goption.value);
+                if ($scope.gvalu2)
+                    $scope.gender.push(registrationForm.goption .value);
+
+                $scope.registrationDetails = [{
+                    key: 'Full Name',
+                    value: $scope.fname
+                }, {
+                    key: 'Course',
+                    value: $scope.courses.toString()
+                }, {
+                    key: 'Gender',
+                    value: $scope.gender.toString()
+                }, {
+                    key: 'Phone no.',
+                    value: $scope.phone
+                }, {
+                    key: 'Current Address',
+                    value: $scope.add
+                }, {
+                    key: 'Email ID',
+                    value: $scope.email
+                },];
+            };
+        });
+    </script>
+
+</body>
+
+</html>
