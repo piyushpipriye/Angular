@@ -2,7 +2,8 @@
 
 <b>Website link :- </b>
 
-<b>https://pococurante-surveys.000webhostapp.com/Registration%20Form/index.html</b>
+<b>        <link href="https://pococurante-surveys.000webhostapp.com/Registration%20Form/index.html" target="_blank">
+</b>
 
 
 ![](reg.PNG)
